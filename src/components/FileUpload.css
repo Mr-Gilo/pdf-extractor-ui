@@ -57,3 +57,115 @@
   margin-top: 1.25rem;
   border-radius: 10px;
 }
+
+/* Mode toggle */
+.mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #64748b;
+  transition: all 0.15s;
+}
+
+.mode-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.mode-btn:hover:not(.active):not(:disabled) { background: #e2e8f0; }
+.mode-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.batch-hint {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.batch-drop-active {
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Batch file list */
+.batch-file-list {
+  margin-top: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.batch-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.clear-all-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+.clear-all-btn:hover { background: #fee2e2; }
+
+.batch-file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: white;
+}
+.batch-file-item:last-child { border-bottom: none; }
+
+.batch-file-icon { font-size: 1rem; flex-shrink: 0; }
+
+.batch-file-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.batch-file-size {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.remove-btn:hover { background: #fee2e2; color: #ef4444; }
+.remove-btn:disabled { opacity: 0.4; cursor: not-allowed; }

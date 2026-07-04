@@ -8,7 +8,10 @@ export default function StatusBar({ apiUrl }) {
   const check = async () => {
     setChecking(true);
     try {
-      const res = await fetch(`${apiUrl}/health`, { signal: AbortSignal.timeout(3000) });
+      const res = await fetch(
+        `${apiUrl}/health`,
+        { signal: AbortSignal.timeout(3000) }
+      );
       const data = await res.json();
       setHealth(data);
     } catch {
@@ -18,6 +21,7 @@ export default function StatusBar({ apiUrl }) {
     }
   };
 
+  // Check on mount and every 30 seconds
   useEffect(() => {
     check();
     const interval = setInterval(check, 30000);
@@ -29,23 +33,28 @@ export default function StatusBar({ apiUrl }) {
   return (
     <div className="status-bar">
       <div className={`status-dot ${online ? "online" : "offline"}`} />
+
       <div className="status-info">
         {online ? (
           <>
             <span className="status-label online-text">API Online</span>
             <span className="status-detail">
               {health.model} · {health.deployment}
+              {health.ocr_support && " · OCR"}
+              {health.batch_support && " · Batch"}
+              {health.version && ` · v${health.version}`}
             </span>
           </>
         ) : (
           <>
             <span className="status-label offline-text">API Offline</span>
             <span className="status-detail">
-              Start: cd backend && python main.py
+              Start: cd backend and python main.py
             </span>
           </>
         )}
       </div>
+
       <button
         className="refresh-btn"
         onClick={check}
